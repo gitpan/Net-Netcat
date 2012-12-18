@@ -1,5 +1,9 @@
 Revision history for Net-Netcat
 
-0.01    Dec 20 2012
+0.01    Dec 18 2012
         First version, released to the wild
+
+0.02	Dec 18 2012
+	Fixed the first bug, poor option parsing of options with 
+	values
 

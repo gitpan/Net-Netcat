@@ -2,7 +2,7 @@ package Net::Netcat;
 
 use warnings;
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw( Class::Accessor::Fast Class::ErrorHandler );
 __PACKAGE__->mk_accessors(qw/
@@ -80,7 +80,11 @@ sub execute {
 			$ncdest = $value;
 			next;
 		}
-		push @ncopts, $key if $value eq 1;
+		if(int($value) != 1) {
+			push @ncopts, $key . ' ' . $value;
+		} else {
+			push @ncopts, $key;
+		}
 
 	}
 	my $cmd = $self->{nc};
