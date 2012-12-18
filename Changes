@@ -7,3 +7,8 @@ Revision history for Net-Netcat
 	Fixed the first bug, poor option parsing of options with 
 	values
 
+0.03	Dec 19 2012
+	Fixed the UNIX domain socket handling, verbose flag and added
+some fluff to the man page. Did some testing. ;)
+
+

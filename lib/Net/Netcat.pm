@@ -2,7 +2,7 @@ package Net::Netcat;
 
 use warnings;
 use strict;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use base qw( Class::Accessor::Fast Class::ErrorHandler );
 __PACKAGE__->mk_accessors(qw/
@@ -62,7 +62,7 @@ our %options = (
 		}
 
 sub execute {
-	my ($opts, %h, $ncdest, $ncport) = ();
+	my ($lflag, $printflg, $opts, %h, $ncdest, $ncport, $uflag) = ();
 
 	my $self = shift;
 	$opts = $self->{options};
@@ -83,19 +83,24 @@ sub execute {
 		if(int($value) != 1) {
 			push @ncopts, $key . ' ' . $value;
 		} else {
+			$printflg = 1 if ($key =~ /\-v/);
+			$uflag = 1 if ($key =~ /\-U/);
+			$lflag = 1 if ($key =~ /\-l/);
 			push @ncopts, $key;
 		}
 
 	}
 	my $cmd = $self->{nc};
 	my $ncoptsline = join ' ', @ncopts;
-	if(defined($ncdest) and $ncdest =~ /\S/) {
-		$ncoptsline = $ncoptsline . " " . join " ", $ncdest, $ncport;
-	} elsif(defined($ncport) and $ncport =~ /\d/) {
+	if(defined($ncdest) and $ncdest =~ /\S/ and defined($uflag) and $uflag == 1) {
+		$ncoptsline = $ncoptsline . " " . $ncdest;
+	} elsif(defined($ncport) and $ncport =~ /\d/ and defined($lflag) and $lflag == 1) {
 		$ncoptsline = $ncoptsline . " " . $ncport;
+	} elsif(defined($ncdest) and $ncdest =~ /\S/ and defined($ncport) and $ncport =~ /\d/) {
+		$ncoptsline = $ncoptsline . " " . join " ", $ncdest, $ncport;
 	}
 	my $fullcmd = $cmd . " " . $ncoptsline ;
-	#print "Full command is $fullcmd\n";
+	print "Command line is: $fullcmd\n" if(defined($printflg) and $printflg == 1);
 	my @runcmd = split / /, $fullcmd;
 
 	run \@runcmd;
@@ -168,6 +173,15 @@ $nc->exec()
 	Contructs Net::Netcat object.It takes a path of netcat command.
 	You can omit this argument and this module searches netcat command within PATH environment variable.
 
+	I tested and developed this on OpenBSD 5.2 netcat. This is
+substantially different from Linux netcat. So kindly sene me bug
+reports.
+
+	There seems to be a bug in netcat with UNIX domain sockets and
+the verbose flag. So don't use that combo. Usually you have to
+terminate the command with the Ctrl-C keyboard interrupt signal. You
+could also redirect the output to a file if desired.
+
 =head2 options( @options )
 
 	Specify netcat command options directly 
@@ -196,7 +210,8 @@ An alias of execute()
 
 	=item destination
 
-	The destination IP address to connect to 
+	The destination IP address to connect to or in case of UNIX
+domain sockets the destination socket file to connect to
 
 	=item port
 
