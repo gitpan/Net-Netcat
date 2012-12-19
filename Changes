@@ -13,4 +13,6 @@ some fluff to the man page. Did some testing. ;)
 
 0.04	Dec 19 2012
 	Fixed several POD errors, now the man page should read fine
+0.05	Dec 19 2012
+	Removed copy paste error in man page	
 

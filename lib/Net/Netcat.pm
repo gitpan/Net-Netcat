@@ -2,7 +2,7 @@ package Net::Netcat;
 
 use warnings;
 use strict;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use base qw( Class::Accessor::Fast Class::ErrorHandler );
 __PACKAGE__->mk_accessors(qw/
@@ -229,7 +229,7 @@ domain sockets the destination socket file to connect to
 
 =head1 AUTHOR
 
-	Girish Venkatachalam, C<< <girish at gayatri-hitech.com> >>
+	Girish Venkatachalam, <girish at gayatri-hitech.com> 
 
 
 =head1 BUGS
@@ -252,19 +252,19 @@ domain sockets the destination socket file to connect to
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-	L<http://annocpan.org/dist/Text-COWsay>
+	L<http://annocpan.org/dist/Net-Netcat>
 
 =item * CPAN Ratings
 
-	L<http://cpanratings.perl.org/d/Text-COWsay>
+	L<http://cpanratings.perl.org/d/Net-Netcat>
 
 =item * RT: CPAN's request tracker
 
-	L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Text-COWsay>
+	L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-Netcat>
 
 =item * Search CPAN
 
-	L<http://search.cpan.org/dist/Text-COWsay>
+	L<http://search.cpan.org/dist/Net-Netcat>
 
 =back
 
