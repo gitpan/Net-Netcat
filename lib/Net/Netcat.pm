@@ -2,7 +2,7 @@ package Net::Netcat;
 
 use warnings;
 use strict;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use base qw( Class::Accessor::Fast Class::ErrorHandler );
 __PACKAGE__->mk_accessors(qw/
@@ -139,7 +139,7 @@ $nc->options{
 
 $nc->exec()
 
-# All options in OpenBSD netcat
+	# All options in OpenBSD netcat
 	ipv4only            => '-4',
 	ipv6only            => '-6',
 	staylistening       => '-k',
@@ -166,9 +166,9 @@ $nc->exec()
 	$nc->exec();
 
 
-	=head1 METHODS
+=head1 METHODS
 
-	=head2 new('/usr/bin/nc')
+=head2 new('/usr/bin/nc')
 
 	Contructs Net::Netcat object.It takes a path of netcat command.
 	You can omit this argument and this module searches netcat command within PATH environment variable.
@@ -206,33 +206,33 @@ An alias of execute()
 
 	Avaiable options are:
 
-	=over
+=over
 
-	=item destination
+=item destination
 
 	The destination IP address to connect to or in case of UNIX
 domain sockets the destination socket file to connect to
 
-	=item port
+=item port
 
 	The port to connect to
 
-	=item author
+=item author
 
 	Set the author.
 
-	=item comment
+=item comment
 
 	Set the comment.
 
-	=back
+=back
 
-	=head1 AUTHOR
+=head1 AUTHOR
 
 	Girish Venkatachalam, C<< <girish at gayatri-hitech.com> >>
 
 
-	=head1 BUGS
+=head1 BUGS
 
 	Please report any bugs or feature requests to
 	C<bug-text-cowsay at rt.cpan.org>, or through the web interface at
@@ -240,7 +240,7 @@ domain sockets the destination socket file to connect to
 	I will be notified, and then you'll automatically be notified of progress on
 	your bug as I make changes.
 
-	=head1 SUPPORT
+=head1 SUPPORT
 
 	You can find documentation for this module with the perldoc command.
 
@@ -248,33 +248,35 @@ domain sockets the destination socket file to connect to
 
 	You can also look for information at:
 
-	=over 4
+=over 4
 
-	=item * AnnoCPAN: Annotated CPAN documentation
+=item * AnnoCPAN: Annotated CPAN documentation
 
 	L<http://annocpan.org/dist/Text-COWsay>
 
-	=item * CPAN Ratings
+=item * CPAN Ratings
 
 	L<http://cpanratings.perl.org/d/Text-COWsay>
 
-	=item * RT: CPAN's request tracker
+=item * RT: CPAN's request tracker
 
 	L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Text-COWsay>
 
-	=item * Search CPAN
+=item * Search CPAN
 
 	L<http://search.cpan.org/dist/Text-COWsay>
 
-	=back
+=back
 
-	=head1 ACKNOWLEDGEMENTS
+=head1 ACKNOWLEDGEMENTS
 
-	=head1 COPYRIGHT & LICENSE
+The author of Netcat Hobbit who remains anonymous to this day.
+
+=head1 COPYRIGHT & LICENSE
 
 	Copyright 2012 Girish Venkatachalam, all rights reserved.
 
 	This program is free software; you can redistribute it and/or modify it
 	under the same terms as Perl itself.
 
-	=cut
+=cut

@@ -11,4 +11,6 @@ Revision history for Net-Netcat
 	Fixed the UNIX domain socket handling, verbose flag and added
 some fluff to the man page. Did some testing. ;)
 
+0.04	Dec 19 2012
+	Fixed several POD errors, now the man page should read fine
 
